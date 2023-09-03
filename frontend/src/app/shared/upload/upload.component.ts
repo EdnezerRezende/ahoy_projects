@@ -14,8 +14,12 @@ export class UploadComponent implements OnChanges {
   @Output() fileUploaded:EventEmitter<File> = new EventEmitter<File>();
 
   ngOnChanges() {
-    // Este método será chamado sempre que os dados forem alterados
     this.fileOver(this.fileProcess);
+    setTimeout(() => {
+      if (this.filesForSend && this.filesForSend.length > 0) {
+        this.fileSend();
+      }
+    }, 400)
   }
 
   public dropped(files: NgxFileDropEntry[], index?: any): void {
@@ -38,8 +42,9 @@ export class UploadComponent implements OnChanges {
     console.log(event);
   }
   public fileSend(){
-    this.filesForSend.forEach(file => {
-      this.fileUploaded.emit(file);
-    });
+    this.fileUploaded.emit(this.filesForSend[0]);
+    // this.filesForSend.forEach(file => {
+    //   this.fileUploaded.emit(file);
+    // });
   }
 }
