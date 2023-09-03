@@ -24,6 +24,7 @@ export class SendFilesAgentesComponent {
   }
 
   handleFileUpload(file: File) {
+    this.fileInProcess = [];
     this.fileInProcess.push(file);
     const reader = new FileReader();
 
@@ -98,7 +99,7 @@ export class SendFilesAgentesComponent {
       next: ((retorno: RetornoProcessamento) => {
         this.emitirAvisoParaExclusao();
 
-        this.showMessage(retorno.data);
+        this.showMessage(" Arquivo: " + this.fileProcess?.name +" "+ retorno.data);
       }),
       error: err => {
         let msg: string = 'Error';
@@ -111,11 +112,13 @@ export class SendFilesAgentesComponent {
   }
 
   private emitirAvisoParaExclusao() {
-    this.fileProcess = this.fileInProcess[0];
-    const index: number = this.fileInProcess.indexOf(this.fileProcess);
+    this.fileProcess = undefined;
+    const file = this.fileInProcess[0];
+    const index: number = this.fileInProcess.indexOf(file);
     if (index >= 0 && index < this.fileInProcess.length) {
       this.fileInProcess = this.fileInProcess.slice(index, 1);
     }
+    this.fileProcess = this.fileInProcess[0];
   }
 
   showMessage(msg: string){
