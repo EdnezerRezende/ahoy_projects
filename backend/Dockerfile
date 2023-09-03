@@ -11,4 +11,4 @@ ENV MYSQL_PASSWORD=admin
 COPY ./init.sql /docker-entrypoint-initdb.d/
 
 # Porta em que o MySQL estará disponível (opcional, o padrão é 3306)
-# EXPOSE 3306
+EXPOSE 3306
