@@ -8,7 +8,6 @@
     - Lombok (Plugin para geração de getters e setters)
         * Talvez seja necessário instalar o plugin do lombok na IDE utilizada para execução do projeto
 
-
 ## Criação do banco de dados
 
     Caso Deseje criar o banco mysql em um container docker, siga os passos abaixo:
@@ -30,7 +29,6 @@
 ```
 mvn clean install
 ```
-### 4 - Execute o comando abaixo no terminal:
 ```
 mvn spring-boot:run
 ```
