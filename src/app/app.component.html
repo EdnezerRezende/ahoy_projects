@@ -1,0 +1,24 @@
+<mat-sidenav-container>
+
+  <mat-sidenav-content >
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="'/home'">
+        <mat-icon>dialpad</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/send-agentes'">
+        <mat-icon>dialpad</mat-icon>
+        <span>Envio de arquivos</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/consult-regioes'">
+        <mat-icon>dialpad</mat-icon>
+        <span>Consulta</span>
+      </button>
+    </mat-menu>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

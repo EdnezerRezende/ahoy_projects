@@ -1,0 +1,11 @@
+<app-loading ></app-loading>
+<mat-card class="align-card-main">
+  <mat-card-header>
+    <mat-card-title class="text-center">
+      <mat-label class="text-center">Insira ou arraste o(s) arquivo(s) desejado(s)</mat-label>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <app-upload (fileUploaded)="handleFileUpload($event)" [fileProcess]="fileProcess" ></app-upload>
+  </mat-card-content>
+</mat-card>
