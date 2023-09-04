@@ -7,6 +7,7 @@
     - Docker (Apenas para criação do banco de dados, caso não tenha o mysql instalado na máquina)
     - Lombok (Plugin para geração de getters e setters)
         * Talvez seja necessário instalar o plugin do lombok na IDE utilizada para execução do projeto
+    - Arquitetura - Port and Adapters (Hexagonal)
 
 ## Criação do banco de dados
 
