@@ -13,15 +13,15 @@
 
 <mat-grid-list cols="6" >
   <mat-grid-tile *ngFor="let item of regioesConsolidadas" [colspan]="3">
-    <mat-card class="text-center example-card"  >
+    <mat-card class="align-card-main min-width-card"  >
       <mat-card-header class="text-center">
         <mat-card-subtitle class="text-center">
-          <mat-label class="text-center"><strong>{{item.siglaRegiao}}</strong></mat-label>
+          <mat-label class="text-center"><strong>Região {{item.siglaRegiao}}</strong></mat-label>
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <mat-card-subtitle>
-          <mat-label class="text-right">Compra: {{item.totalCompra}}</mat-label>
+          <mat-label class="text-right">Compra: {{item.totalCompra}} </mat-label>
 
         </mat-card-subtitle>
         <mat-card-subtitle>

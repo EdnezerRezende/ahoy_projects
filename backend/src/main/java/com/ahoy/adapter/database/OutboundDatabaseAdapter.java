@@ -4,12 +4,14 @@ import com.ahoy.adapter.database.repositories.AgenteRepository;
 import com.ahoy.adapter.database.repositories.RegiaoRepository;
 import com.ahoy.adapter.dtos.RegiaoConsolidadaDTO;
 import com.ahoy.adapter.dtos.RetornoProcessamento;
-import com.ahoy.domain.entity.AgenteEntity;
+import com.ahoy.adapter.database.entity.AgenteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class OutboundDatabaseAdapter implements OutboundDatabaseAdapterSpec {
@@ -39,7 +41,18 @@ public class OutboundDatabaseAdapter implements OutboundDatabaseAdapterSpec {
 
     @Override
     public RetornoProcessamento<List<RegiaoConsolidadaDTO>> getConsolidatedByRegiao() {
-        final List<RegiaoConsolidadaDTO> regiaoConsolidadaDTOS = regiaoRepository.obterDadosConsolidadosPorRegiao();
-        return RetornoProcessamento.<List<RegiaoConsolidadaDTO>>builder().data(regiaoConsolidadaDTOS).build();
+        final List<RegiaoConsolidadaDTO> consolidatedList = regiaoRepository.obterDadosConsolidadosPorRegiao()
+                .stream()
+                .collect(Collectors.groupingBy(RegiaoConsolidadaDTO::getSiglaRegiao))
+                .entrySet()
+                .stream()
+                .map(entry -> new RegiaoConsolidadaDTO(
+                        entry.getKey(),
+                        entry.getValue().stream().mapToDouble(RegiaoConsolidadaDTO::getTotalCompra).sum(),
+                        entry.getValue().stream().mapToDouble(RegiaoConsolidadaDTO::getTotalGeracao).sum()
+                ))
+                .collect(Collectors.toList());
+
+        return RetornoProcessamento.<List<RegiaoConsolidadaDTO>>builder().data(consolidatedList).build();
     }
 }

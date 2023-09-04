@@ -2,7 +2,7 @@ package com.ahoy.adapter.database;
 
 import com.ahoy.adapter.dtos.RegiaoConsolidadaDTO;
 import com.ahoy.adapter.dtos.RetornoProcessamento;
-import com.ahoy.domain.entity.AgenteEntity;
+import com.ahoy.adapter.database.entity.AgenteEntity;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package com.ahoy.port.database;
 import com.ahoy.adapter.database.OutboundDatabaseAdapterSpec;
 import com.ahoy.adapter.dtos.RegiaoConsolidadaDTO;
 import com.ahoy.adapter.dtos.RetornoProcessamento;
-import com.ahoy.domain.entity.AgenteEntity;
+import com.ahoy.adapter.database.entity.AgenteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

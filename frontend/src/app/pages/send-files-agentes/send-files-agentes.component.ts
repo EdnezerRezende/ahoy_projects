@@ -74,15 +74,11 @@ export class SendFilesAgentesComponent {
 
           regiaoXML.compra?.valor.forEach((compraXML: any) => {
             if (!regiao.compra) regiao.compra = [];
-            const compra: Compra = new Compra();
-            compra.valor = Number(compraXML._text);
-            regiao.compra.push(compra);
+            regiao.compra.push(Number(compraXML._text));
           });
           regiaoXML.geracao?.valor.forEach((geracaoXML: any) => {
             if (!regiao.geracao) regiao.geracao = [];
-            const geracao: Geracao = new Geracao();
-            geracao.valor = Number(geracaoXML._text);
-            regiao.geracao.push(geracao);
+            regiao.geracao.push(Number(geracaoXML._text));
           });
 
           regioes.push(regiao);

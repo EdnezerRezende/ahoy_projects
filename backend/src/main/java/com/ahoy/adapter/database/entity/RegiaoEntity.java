@@ -1,8 +1,7 @@
-package com.ahoy.domain.entity;
+package com.ahoy.adapter.database.entity;
 
 import com.ahoy.adapter.dtos.RegiaoDTO;
-import com.ahoy.domain.entity.children.CompraEntity;
-import com.ahoy.domain.entity.children.GeracaoEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,14 +24,12 @@ public class RegiaoEntity {
     private String sigla;
 
     @ManyToOne
-    @JoinColumn(name = "agente_id")
+    @JsonIgnore
     private AgenteEntity agente;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<CompraEntity> compra;
+    private List<Double> compra = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<GeracaoEntity> geracao;
+    private List<Double> geracao = new ArrayList<>();
 
     public static List<RegiaoEntity> getInstance(final List<RegiaoDTO> regioes) {
 
@@ -40,8 +37,8 @@ public class RegiaoEntity {
 
         regioes.forEach(regiaoDTO -> regioesEntities.add(RegiaoEntity.builder()
                 .sigla(regiaoDTO.getSigla())
-                .compra(CompraEntity.getInstance(regiaoDTO.getCompra()))
-                .geracao(GeracaoEntity.getInstance(regiaoDTO.getGeracao()))
+                .compra(regiaoDTO.getCompra())
+                .geracao(regiaoDTO.getGeracao())
                 .build()));
         return regioesEntities;
     }

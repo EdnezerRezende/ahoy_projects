@@ -1,8 +1,5 @@
 package com.ahoy.adapter.dtos;
 
-import com.ahoy.adapter.dtos.children.CompraDTO;
-import com.ahoy.adapter.dtos.children.GeracaoDTO;
-import com.ahoy.adapter.dtos.children.PrecoMedioDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +14,9 @@ import java.util.List;
 public class RegiaoDTO {
     private String sigla;
 
-    private List<GeracaoDTO> geracao;
+    private List<Double> geracao;
 
-    private List<CompraDTO> compra;
+    private List<Double> compra;
 
-    private List<PrecoMedioDTO> precoMedio;
+    private List<Double> precoMedio;
 }

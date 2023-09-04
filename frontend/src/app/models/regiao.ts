@@ -4,9 +4,9 @@ import {Geracao} from "./children/geracao";
 
 export class Regiao {
   sigla?: string;
-  geracao?: Geracao[];
-  compra?: Compra[];
-  precoMedio?: PrecoMedio[];
+  geracao?: number[];
+  compra?: number[];
+  precoMedio?: number[];
 
   constructor() {
   }

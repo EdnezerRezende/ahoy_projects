@@ -1,4 +1,4 @@
-package com.ahoy.domain.entity;
+package com.ahoy.adapter.database.entity;
 
 import com.ahoy.adapter.dtos.AgenteDTO;
 import com.ahoy.domain.converters.DateConverter;
@@ -22,7 +22,7 @@ public class AgenteEntity {
     private String codigo;
     private LocalDate data;
 
-    @OneToMany(mappedBy = "agente", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agente")
     private List<RegiaoEntity> regioes;
 
     public static List<AgenteEntity> getInstance(final List<AgenteDTO> agentes){
