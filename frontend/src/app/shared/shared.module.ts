@@ -14,6 +14,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {LoadingService} from "../services/loading.service";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {MatMenuModule} from "@angular/material/menu";
     NgxFileDropModule,
     MatInputModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatIconModule,
     MatListModule,
     MatSnackBarModule,
@@ -42,6 +44,7 @@ import {MatMenuModule} from "@angular/material/menu";
     NgxFileDropModule,
     MatInputModule,
     MatButtonModule,
+    MatButtonToggleModule,
     UploadComponent,
     MatIconModule,
     MatListModule,

@@ -10,9 +10,14 @@
     <mat-label class="text-center" *ngIf="!showDados">Não existem dados para apresentação</mat-label>
   </mat-card-content>
 </mat-card>
-
+<div style="margin-left: 43%;">
+  <mat-button-toggle value="Todas" (change)="showAllRegioes()">Todas</mat-button-toggle>
+  <mat-button-toggle-group #group="matButtonToggleGroup"  *ngFor="let regiao of regioes">
+    <mat-button-toggle value="regiao" (change)="showRegiao(regiao)">{{regiao}}</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
 <mat-grid-list cols="6" >
-  <mat-grid-tile *ngFor="let item of regioesConsolidadas" [colspan]="3">
+  <mat-grid-tile *ngFor="let item of regioesConsolidadesFiltered" [colspan]="3">
     <mat-card class="align-card-main min-width-card"  >
       <mat-card-header class="text-center">
         <mat-card-subtitle class="text-center">

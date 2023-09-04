@@ -12,7 +12,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class ConsultRegioesComponent implements OnInit{
   regioesConsolidadas: RegiaoConsolidada[] = [];
   showDados: boolean = false;
-
+  regioesConsolidadesFiltered: RegiaoConsolidada[] = [];
+  regioes: (string | undefined)[] = [];
   constructor(private ahoyService: AhoyService,
               private snackBar: MatSnackBar) { }
 
@@ -24,6 +25,8 @@ export class ConsultRegioesComponent implements OnInit{
     this.ahoyService.getRegioesConsolidadas().subscribe({
       next: (retorno: RetornoProcessamento) => {
         this.regioesConsolidadas = retorno.data;
+        this.regioesConsolidadesFiltered = this.regioesConsolidadas;
+        this.regioes = this.regioesConsolidadas.map(regiao => regiao.siglaRegiao);
         if(this.regioesConsolidadas.length > 0) {
           this.showDados = true;
           return;
@@ -43,5 +46,15 @@ export class ConsultRegioesComponent implements OnInit{
       horizontalPosition: 'center',
       verticalPosition: 'top',
     })
+  }
+
+  showRegiao(regiao: string | undefined){
+    this.regioesConsolidadesFiltered = [];
+    this.regioesConsolidadesFiltered = this.regioesConsolidadas.filter(regiaoConsolidada => regiaoConsolidada.siglaRegiao === regiao);
+  }
+
+  showAllRegioes(){
+    this.regioesConsolidadesFiltered = this.regioesConsolidadas;
+
   }
 }
